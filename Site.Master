@@ -1,0 +1,141 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="BillCrud.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title><%: Page.Title %></title>
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+
+    <!-- AdminLTE v4 CSS -->
+    <link rel="stylesheet" href="<%= ResolveUrl("~/adminlte/css/adminlte.css") %>" />
+
+    <!-- OverlayScrollbars -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlaysscrollbars@2.11.0/styles/overlayscrollbars.min.css" />
+
+    <!-- existing bundles -->
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+
+</head>
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+
+<form runat="server">
+
+    <!-- KEEP ScriptManager -->
+    <asp:ScriptManager runat="server">
+        <Scripts>
+            <asp:ScriptReference Name="MsAjaxBundle" />
+            <asp:ScriptReference Name="jquery" />
+            <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+            <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+            <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+            <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+            <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+            <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+            <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+            <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+            <asp:ScriptReference Name="WebFormsBundle" />
+        </Scripts>
+    </asp:ScriptManager>
+
+
+    <!-- ====================== -->
+    <!-- BEGIN ADMINLTE LAYOUT -->
+    <!-- ====================== -->
+
+    <div class="app-wrapper">
+
+        <!-- HEADER -->
+        <nav class="app-header navbar navbar-expand bg-body">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-lte-toggle="sidebar" href="#"><i class="bi bi-list"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= ResolveUrl("~/") %>">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+            <div class="sidebar-brand">
+                <a href="<%= ResolveUrl("~/") %>" class="brand-link">
+                    <span class="brand-text fw-light">My Application</span>
+                </a>
+            </div>
+
+            <div class="sidebar-wrapper">
+                <nav>
+                    <ul class="nav sidebar-menu flex-column">
+
+                        <li class="nav-item">
+                            <a href="<%= ResolveUrl("~/Pages/Customer/CustomerList.aspx") %>" class="nav-link">
+                                <i class="nav-icon bi bi-people"></i>
+                                <p>Customers</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="<%= ResolveUrl("~/Pages/Item/ItemList.aspx") %>" class="nav-link">
+                                <i class="nav-icon bi bi-box"></i>
+                                <p>Items</p>
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                         <a href="<%= ResolveUrl("~/Pages/Bills/BillList.aspx") %>" class="nav-link">
+                             <i class="nav-icon bi bi-box"></i>
+                             <p>BillList</p>
+                         </a>
+                         </li>
+                        <li class="nav-item">
+<a href="<%= ResolveUrl("~/Pages/Bills/BillCreate.aspx") %>" class="nav-link">
+    <i class="nav-icon bi bi-box"></i>
+    <p>Bills</p>
+</a>
+</li>
+
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="app-main">
+            <div class="app-content">
+                <div class="container-fluid">
+
+                    <!-- WebForms Content -->
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="app-footer">
+            <strong>© <%= DateTime.Now.Year %> My Application</strong>
+        </footer>
+
+    </div>
+
+</form>
+
+<!-- JS (Place OUTSIDE ScriptManager) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/overlaysscrollbars@2.11.0/browser/overlaysscrollbars.browser.es6.min.js"></script>
+<script src="<%= ResolveUrl("~/adminlte/js/adminlte.js") %>"></script>
+
+</body>
+</html>
